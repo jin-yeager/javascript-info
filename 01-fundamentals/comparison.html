@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>comparison</title>
+</head>
+<body>
+<p> 비교 연산자는 불린 형 반환</p>
+<p> 문자열 비교 : 사전편집 순 비교</p>
+<p> 다른 형 끼리 비교</p>
+<p> 일치 연산자</p>
+<p> null , undefined 비교</p>
+
+<script>
+    /* 문자열 비교 */
+    console.log( 'Z' > 'A' ); // true
+    console.log( 'Glow' > 'Glee' ); // true
+    console.log( 'Bee' > 'Be' ); // true
+
+    /* 자료형이 다르면 JS는 숫자형으로 바꾼다 */
+    console.log('2'> 1);
+    console.log(true == 0); //false, 동등연산자 사용
+
+    /* 흥미로운 점 */
+    let a = 0; //
+    console.log( Boolean(a) ); // 논리 평가시, false
+
+    let b = "0";
+    console.log( Boolean(b) ); // 논리 평가시, true
+
+    console.log(a == b); // 동등 비교(==) 시, true!
+
+    /* 일치 연산자 : 동등연산자는 0과 false를 구별하지 못한다. */
+    // 동등 연산자가 형이 다른 피연산자를 숫자형으로 바꾸기 때문
+    // 일치 연산자는 자료 형의 동등 여부까지 판단.
+
+    console.log( 0 === false ); // 엄격하게, false
+
+    /* null과 undefined 특별한 사이. */
+    console.log( null == undefined ); // 특별하게 true
+    console.log( null === undefined ); // false
+
+    /* null vs 0 */
+    // 동등 연산자는 피연산자가 undefined나 null일 때 형 변환 x
+    // 위의 특별한 사이일 때 빼고 , 무조건 false
+
+    console.log( null > 0 );  // (1) false , null=0 입장에서 비교
+    console.log( null == 0 ); // (2) false , 동등연산자는 무조건!!!
+    console.log( null >= 0 ); // (3) true , null=0 입장에서 비교
+
+    console.log( undefined > 0 ); // false (1)
+    console.log( undefined < 0 ); // false (2)
+    console.log( undefined == 0 ); // false (3)
+
+
+
+
+</script>
+
+
+</body>
+</html>

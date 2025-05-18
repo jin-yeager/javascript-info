@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>type-conversions</title>
+</head>
+<body>
+<p> 문자, 숫자, 논리형으로의 형 변환은 자주 일어나는 형 변환</p>
+<br>
+<p> 문자형으로 변환은 무언가를 출력할 때 : String(value) </p>
+<p> 숫자형으로 변환은 수학 관련 연산 시 : Number(value) </p>
+<p> 불린형으로 변환은 논리 연산 시 : Boolean(value) </p>
+<br>
+<p> Number 값 초기화 전은 undefined</p>
+<p> Number 값 초기화 : 0 </p>
+
+
+
+
+<script>
+
+    /* boolean --> String 형 변환 */
+    let value = true;
+    console.log(typeof value);
+
+    value = String(value);
+    console.log(typeof value);
+
+    /* NUMBER 형 변환 */
+    console.log("6" / "2"); //  자동변환 사례
+
+    let str = "123"
+    console.log(typeof str);
+    let num = Number(str); // 문자열 "123"이 숫자 123으로 변환된다.
+    console.log(typeof num);
+
+    let age = Number("임의의 문자열123");
+    console.log(age); // Nan, 형 변환이 실패합니다.
+
+    //아래는 숫자형으로 변환 시 적용되는 규칙이다ㅏ.
+    // undefined => NaN (초기화 전)
+    // null => 0 (초기화 상태)
+    // true and false =>  1 & 0
+    // string 문자열의 처음과 끝 공백이 제거. => 0
+    //ex
+    console.log(Number(" 123 ")); // 123
+    console.log(Number("123z")); // NaN
+    console.log(Number(undefined)); // NaN
+    console.log(Number("")); // 0
+    console.log(Number(true)); // 1
+    console.log(Number(false)); // 0
+    console.log(Number(false||true)); // 1
+    console.log(Number(false&&true)); // 0
+
+    /* convert to boolean */
+
+    console.log(Boolean(1)); // (true)
+    console.log(Boolean(0)); // (false)
+
+    //비어있지 않은 문자열은 언제나 TRUE
+    console.log(Boolean("hello")); // (true)
+    console.log(Boolean("")); // (false)
+    console.log(Boolean("0")); // (true) => 문자
+    console.log(Boolean(" ")); // (true) => 비어있지 않아서 true!!!
+
+</script>
+</body>
+</html>

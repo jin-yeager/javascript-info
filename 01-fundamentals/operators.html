@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>operators</title>
+</head>
+<body>
+<p>나머지 연산자 %</p>
+<p>거듭제곱 연산자 **</p>
+<p>이항연산자 덧셈의 특징</p>
+<p>단항연산자 덧셈 : 형 변환과 같다</p>
+<p>증감연산자 : 전위&후위</p>
+<p>쉼표 연산자 : 평가 후 마지막 값만 반환</p>
+
+<script>
+    /* 덧셈연산자 만의 특징 */
+    //이항 연산자 일 때
+    let s = "my"+"string";
+    console.log(s);
+    console.log('1'+2); // "12"
+    console.log('2'+1); // "21"
+    console.log(2+2+'1'); //"41"
+
+    //단항 연산자 일 때
+    // 숫자형이 아닌 피연산자는 숫자형으로 변화한다.
+    console.log( +true ); // 1
+    console.log( +"" );   // 0
+    let apples = "2";
+    let oranges = "3";
+    console.log( +apples + +oranges ); // 5
+
+
+    //다른 연산자는 Number로 변환 후 계산
+    console.log(6-'2'); // 4
+    console.log('6'/'2'); // 3
+
+    /* 증감연산자 전위 후위 차이 */
+    let counter = 0;
+    console.log( ++counter ); // 1, 새로운 값 반환
+
+    let counter1 = 0;
+    console.log( counter1++ ); // 0, 기존 값 반환
+
+    /* 쉼표 연산자 ,는 여러 표현식을 코드 한 줄에서 평가 */
+    // 쉼표연산의 우선우위는 매우 낮음.
+    // 마지막 값만 반환되고 버려짐.
+    let a = (1+2 , 3+4);
+    console.log(a);
+
+    /* 과제 : 덧셈 동작시키기 */
+
+    let a2 = +prompt("덧셈할 첫 번째 숫자를 입력해주세요.", 1);
+    let b2 = +prompt("덧셈할 두 번째 숫자를 입력해주세요.", 2);
+
+    console.log(a2 + b2); // 12
+</script>
+
+
+
+
+
+
+</body>
+</html>
