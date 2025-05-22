@@ -6,19 +6,24 @@
 </head>
 <body>
 <script>
+    /* while */
+    let i = 0;
+    while (i < 3) {
+        console.log("i : " + i);
+        i++;
+    }
 
-  let i = 0;
-  while(i<3){
-    console.log("i : "+i);
-    i++;
-  }
+    let j = 3;
+    while (j) console.log("j : " + j--);
 
-  let j = 3;
-  while (j) console.log("j : "+ j--);
+    let k = 0;
+    do {
+        //반복문 본문
+        console.log("k : " + ++k);
+    } while (k < 3);
 
-  do {
-    //반복문 본문
-  }while( i < 3 )
+    /* for */
+
 
 </script>
 
