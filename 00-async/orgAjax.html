@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+</head>
+<body>
+<div id="merong"></div>
+
+<script>
+    //JS 엔진  +  Web API (DOM, XMLHttpRequest, fetch, alert 등)
+    //= 우리가 흔히 쓰는 브라우저 JS 환경
+
+    //Node.js는 브라우저가 아니라 서버용 환경이기 때문에
+    //XMLHttpRequest, document, alert 같은 Web API는 없음.
+
+    //Node.js는 npm install 필요
+    //비동기 => i/o 작업에 필요성 있음.
+
+
+    //DRY(Do not Repeat Yourself),KISS(Keep It Simple, Stupid) 원칙
+    const $ = {}
+    $.ajax=function (pOpt) {
+        //기본적으로 xhr은 전역변수로 쓰는 건 좋지 않음 (각각 할 일은 알아서)
+        //아작스 원본 XMLHttpRequest 요게 핵심 (퀵서비스 아저씨)
+        const xhr = new XMLHttpRequest(); //퀵서비스 아저씨 생성
+        xhr.open(pOpt.method,pOpt.url, true);  //할일 지정 , false => 동기
+        // 퀵서비스 상태를 이벤트로 알려줌
+        xhr.onreadystatechange = function () {
+            //중간 상태는 관심이 없음
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                if (xhr.status == 200) {
+                    //제대로 일이 끝난 상태: 결과 확인
+                    //console.log("결과 : ", xhr.responseText);
+                    pOpt.success(xhr.responseText);
+                }
+            }
+        }
+        xhr.send(); // 시킨대로 하세요 => 실제 요청
+    }
+
+    $.ajax({
+        method:"get",
+        url:"ajaxData.txt",
+        success:function(rslt){
+            console.log("체킁킁 : 성공",rslt);
+            document.querySelector("#merong").innerHTML = `<h1>${rslt}</h1>`
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
