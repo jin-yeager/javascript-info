@@ -24,6 +24,75 @@
 
     /* for */
 
+    //for문의 실행 원리
+    let l = 0
+    if(l<3){
+        console.log(l); l++
+    }
+    if(l<3){
+        console.log(l); l++
+    }
+    if(l<3){
+        console.log(l); l++
+    }
+
+    for(let m = 0; m < 3; m++){
+        console.log('m :'+m);
+    }
+    // console.log(m); 인라인 변수 선언이었으므로 X
+
+    let n = 0;
+    for(n=0; n<3; n++){
+        console.log('n:'+n);
+    }
+    console.log('n:'+n);
+
+    let a = 0;
+
+    for(;a<3;a++){ //begin 생략 가능
+        console.log("a :"+a);
+    }
+    for(;a<6;){ // step 생략가능
+        console.log("a :"+ a++ );
+    }
+    // for(;;){
+    //     //무한 반복문
+    //     console.log("a :"+ a++ );
+    // }
+
+    //반복문 빠져나오기 = 조건문을 falsy로 만들어라
+    let sum = 0;
+    while(true){
+        let value = +prompt("숫자를 입력하세요.",'');
+        if(!value) break;// (*)
+        sum += value;
+    }
+    console.log('합계:'+ sum);
+
+    //다음 반복으로 넘어가기
+    for(let i = 0; i<10; i++){
+        if(i%2 ==0) continue;
+        console.log(i);
+    }
+
+    for(let i = 0; i<10;i++){
+        if(i%2){
+            console.log(i);
+        }
+    }
+
+    //(i > 5) ? alert(i) : continue; // 여기에 continue,break XXXXXX
+
+    //좌표찍기 => 시조의 거인 구현
+    outer : for(let i = 0;i<3; i++){
+        for(let j=0; j<3; j++){
+            let input = prompt(`(${i},${j})의 값`,'');
+            console.log(input);
+            if(!input) break outer;
+        }
+    }
+    console.log('완료!');
+
 
 </script>
 
