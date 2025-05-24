@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arrow-function</title>
+</head>
+<body>
+<h3> arrow function</h3>
+<p>함수 표현식보다 단순하고 간결한 문법으로 함수를 만들 수 있다.</p>
+<script>
+    // let func = function(arg1,arg2,...argN){
+    //     return expression;
+    // }
+
+    let sum = (a, b) => a + b;
+
+    /* 위 화살표 함수는 아래 함수의 축약 버전이다 */
+    let sum1 = function (a, b) {
+        return a + b;
+    }
+
+    console.log(sum(1, 2));
+    console.log(sum1(1, 2));
+
+    let double = n => n * 2;
+    console.log(double(5));
+
+    let sayHi = () => console.log("안녕하세요!");
+    sayHi();
+
+    let age = prompt("나이를 알려주세요", 18);
+    let welcome = (age < 18) ?
+        () => console.log('안녕') :
+        () => console.log("안녕하세요!");
+
+    welcome();
+
+    let sum2 = (a, b) => {  // 중괄호는 본문 여러 줄로 구성되어 있음을 알려줍니다.
+        let result = a + b;
+        return result; // 중괄호를 사용했다면, return 지시자로 결괏값을 반환해주어야 합니다.
+    };
+
+    console.log("arrow func : " + sum2(1, 2)); // 3
+
+    /* */
+
+    let ask = (question, yes, no) => {
+        confirm(question) ?
+            yes() :
+            no();
+    }
+
+    ask(
+        "동의하십니까?",
+        () => { alert("동의하셨습니다."); },
+        () => { alert("취소 버튼을 누르셨습니다."); }
+    );
+
+</script>
+
+</body>
+</html>

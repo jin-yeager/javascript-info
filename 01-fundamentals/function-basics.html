@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function-basics</title>
+</head>
+<body>
+<script>
+
+    /* 함수 기본 */
+    function name(parameter1, parameter2, ...parameterN) {
+        // 함수 본문
+    }
+
+    let userName = 'John';
+
+    function showMessage() {
+        let message = 'Hello,' + userName;
+        console.log(message);
+    }
+
+    showMessage();
+
+    function showMessage1() {
+        userName = "Bob";
+
+        let message = 'Hello,' + userName;
+        console.log(message);
+    }
+
+    console.log('변경 전 :' + userName);
+
+    showMessage1();
+
+    console.log('변경 후 :' + userName);
+
+    /* 파라미터 */
+    function showParameter(from, text) {
+        from = '*' + from + '*';
+        console.log(from + ': ' + text);
+    }
+
+    showParameter('Ann', 'Hello!');
+    showParameter('Ann', "What's up?");
+
+    let from = "Ann";
+
+    showParameter(from, "Hello~");
+
+    console.log(from); //*Ann*으로 변경되지 않는다.
+
+    showParameter("Ann");
+    showParameter();
+
+    //text엔 undefined 가 할당될 뿐, 에러가 아니다.
+
+    function showParameter2(from, text = "default설정 칸") {
+        console.log(from + ": " + text);
+    }
+
+    showParameter2("Ann");
+
+    showParameter3("Eugine");
+
+    function anotherFunction() {
+        return "I love you";
+    }
+
+    function showParameter3(from, text = anotherFunction()) {
+        console.log(from + " : " + text);
+    }
+
+    function showParameter4(text) {
+        if (text === undefined) {
+            text = '파라미터가 없어서 기본 값';
+        }
+        console.log(text);
+    }
+
+    showParameter4();
+
+    function showCount(count) {
+        console.log(count ?? "unknown");
+    }
+
+    showCount(0); //정의된 값
+    showCount(null); //정의되지 않음 => ?? 다음 값
+    showCount(); //정의되지 않음 => ?? 다음 값
+
+    /* ~~ return ~~ */
+
+    function sum(a, b) {
+        return a + b;
+    }
+
+    let result = sum(1, 2);
+    console.log(result);
+
+    function checkAge(age) {
+        if (age >= 18) {
+            return true;
+        } else {
+            return confirm('보호자의 동의를 받으셨나요?');
+        }
+
+    }
+
+    let age = prompt('나이를 알려주세요', 18);
+
+    if (checkAge(age)) {
+        console.log('접속 허용');
+    } else {
+        console.log('접속 차단');
+    };
+
+    function showMovie(age){
+        if(!checkAge(age)){
+            return;
+        }
+
+        console.log("18세 이상 영화 상영 시작합니다.");
+    }
+
+    showMovie(age);
+
+    /* return이 없거나 return value가 없는 경우 */
+    function doNothing(){
+        /* empty */
+    }
+    console.log('doNothing : '+(doNothing()===undefined));
+
+    function doNothing1(){
+        return;
+    }
+    console.log('doNothing : '+(doNothing1()===undefined));
+    // undefined를 반환
+
+    /* 함수는 간결하고, 한 가지 기능만 수행할 수 있게 만들어야 한다.*/
+    //"get..." = 값을 반환함
+    //"calc..." = 무언가를 계산함
+
+    function showPrimes(n){
+        nextPrime: for (let i = 2; i < n; i++){
+            for(let j = 2; j < i; j++){
+                if(i%j == 0 ) continue nextPrime;
+            }
+            console.log("소수 i ="+i);
+        }
+    }
+
+    showPrimes(6);
+
+    function showPrimes1(n){
+        for( let i = 2; i < n; i++){
+            if(!isPrime(i)) continue;
+            console.log(i);
+        }
+    }
+
+    function isPrime(n){
+        for(let i=2; i<n; i++){
+            if(n%i == 0) return false;
+        }
+        return true;
+    }
+
+    /* else */
+    function checkAge1(age){
+
+        return age>18 ?
+            true : confirm('보호자의 동의를 받으셨나요?');
+    }
+
+    checkAge1(age);
+
+    /* 과제 */
+    function min(a,b){
+        if(a>b) return b;
+        else if(b>a) return a;
+        else return 0;
+    }
+
+    console.log(min(1,3));
+    console.log(min(5,3));
+    console.log(min(3,2));
+
+    function pow(x,n){
+        let answer = 1;
+        for(let i = 0; i< n; i++){
+            answer *=x;
+        }
+
+        return answer;
+    }
+    console.log('pow : '+pow(3,2));
+
+</script>
+
+</body>
+</html>
