@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // Hell Of Callback 
+    // Promise <= blue bird란 회사가 만들어서 지원
+    // resolve(성공), reject(실패), pending(진행중)
+    
+    function fCK(){
+        return new Promise((res,rej)=>{
+            //res("지은 만만세");
+            // rej("문제 발생! 지은이는 죄지은자"); 
+            // 거의 직접 쓸 일이 없는데 , B/E 페이크 코드 만들때
+            
+            // 가짜 데이터
+            const rslt = [
+                {name:"연우",alias:"연두"},
+                {name:"지은",alias:"옷지은"}
+            ];
+
+            setTimeout(()=>{
+                res(rslt);
+            },1500); 
+        })
+    }
+    
+    // then / catch가 처음에는 칭찬을 받았는데, 결국 써보닝, then 지옥이 발생
+    // 다시 더 좋은 아이디어를 가져오라고 압박 => async / await 출현(엄청찬 칭찬 폭발!)
+    // 다 좋은데 단점이 1개 꼭 함수를 만들어서 호출하는 방식으로 사용해야 함
+    // 아주 간단한 호출은 then을 사용하고, 그외 경우는 async/await 사용(가독성이 엄청 좋아짐)을 추천
+
+    async function fJiEun(){
+        alert("얘는 언제 뜰가용?");  // 가장 먼저 뜸, 아직 실질적 비동기 코드가 없음
+        let myRslt    = await fCK();  // 실제 비동기 진입 지점
+        console.log("결과 체킁:",myRslt);
+        alert("연두해용");   // 얘가 나중에 뜸
+    }
+
+    fJiEun(); // 호출!
+    alert("은지해용");  // 얘가 먼저 뜸
+
+
+    /*
+    fCK().then((rslt)=>{
+        console.log("썽공 결과:",rslt);
+    }).catch((err)=>{
+        console.log("문제발생:",err);
+    }).finally(()=>{
+        // 자바스크립트가 서버에서 돌아가냐, 클라이언트(브라우져)에서
+        // 돌아가냐에 따라 의미가 있기도 하고, 없기도 함
+        console.log("무조건 실행!");
+    })
+    */
+</script>
+

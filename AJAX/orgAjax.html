@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<div id="merong"></div>
+<script>
+// DRY(Do not Repeat Yourself) , KISS(Keep It Simple, Stupid) 원칙
+const $= {}
+$.ajax= function(pOpt){
+    // 원본 AJAX
+    const xhr = new XMLHttpRequest(); 
+    xhr.open(pOpt.method,pOpt.url,true); 
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200) {
+            //console.log("결과:",xhr.responseText);
+            pOpt.success(xhr.responseText);
+        } 
+    }
+    xhr.send();  
+}
+
+// 원본 AJAX를 일반화환 jQuery AJAX  => 한 시대를 풍미
+$.ajax({
+    method:"get",
+    url:"data.txt",
+    success:function(rslt){
+       console.log("체킁킁: 성공",rslt);
+       document.querySelector("#merong").innerHTML = `<h1>${rslt}</h1>`
+    } 
+});
+
+</script>
