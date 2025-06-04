@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>기본 문법 요약</title>
+</head>
+<body>
+<script>
+  //여러 개의 구문은 세미콜론을 기준으로 구분할 수 있다.
+  console.log('Hello');console.log('World');
+
+  //줄바꿈만으로 가능한 것도 스크립트에서는 가능하다.
+  console.log('Hello')
+  console.log('World')
+
+  //세미콜론 자동삽입의 원리인데, 동작하지 않을 때도 있다.
+  console.log("이 메시지가 출력된 후에 에러가 발생합니다.");
+
+  [1,2].forEach(alert)
+
+  function f(){
+    //함수 선언문 끝엔 세미콜론이 필요없다.
+  }
+
+/*  for(;;){
+    // 반복문 끝엔 세미콜론이 필요 없다.
+  }*/
+
+  //'use strict'; 엄격모드를 활성화 시키면
+  //모던 자바스크립트에서 지원하는 모든 기능을 사용할 수 있다.
+
+  //변수는
+  //-let
+  //-var : 과거에 쓰이던 키워드
+  //-const : 한 번 값을 할당하면 더는 값을 바꿀 수 없는 상수를 정의할 때 쓰임.
+  //**변수는 숫자와 문자를 사용하되, 문자로 시작해야 한다. $,_ 사용가능**
+
+  let x = 5;
+  x = "John";
+
+  console.log(typeof null); //object가 null,null 자체가 독립자료형이다
+  console.log(typeof undefined); //값이 할당되지 않은 undefined도 그 자체로 독립자료형
+  console.log(typeof function(){});
+
+  /* 상호작용 */
+  //prompt(question, [default])
+  //confirm(question)
+  //alert(message)
+
+  let userName = prompt("이름을 알려주세요.", "영희");
+  let isTeaWanted = confirm("차 한 잔 드릴까요?");
+
+  console.log(" 방문객 : "+userName);
+  console.log(" 차 주문 여부 : "+isTeaWanted);
+
+  /* 연산자 */
+  //산술 연산자, 덧셈 연산자 +는 피연산자 중 하나가 문자열일 때
+  //나머지 하나는 문자형으로 바꾸고 두 문자열을 연결한다.
+    console.log('1'+2);
+    console.log(1+'2');
+  //할당 연산자
+  //  a = b
+  //  a*=2
+  //삼항연산자
+  //논리연산자 **,||는 평가가 멈춘 시점의 값을 반환한다.(꼭 true나 false일 필요는 없음)
+  //NOT 연산자 !는 피연산자의 자료형을 불린형으로 바꾼 후 그 역을 반환한다.
+  //nullish 병합 연산자
+  //nullish 병합 연산자 ??는 피연산자 중 실제 값이 정의된 피연산자를 찾는 데 쓰인다.
+  //a가 null이나 undefined가 아니면 a??b의 평가 결과는 a이고.
+  //undefined이면 a??b의 평가 결과는 b가 된다.
+  //비교 연산자
+  //동등 연산자 ==는 형이 다른 값끼리 비교할 때 !!!
+  //숫자형으로 바꾼 후 비교를 진행한다.
+  //null과 undefined는 자기끼리 비교할 땐 참을 반환하지만 다른 자료 형과 비교할 땐 거짓을 반환한다.
+
+  console.log(null==undefined); //서로에게 특별하다는 특징이 있음.
+  console.log(null===undefined); //서로 다른 독립자료형이기 때문
+
+  //사칙 연산에 관련된 연산자
+
+  /* while, for */
+  // while(){} ** do {}while()~ ** for(;;)
+
+  /* switch */
+  // 'switch’문은 조건을 확인할 때 내부적으로 일치 연산자 ===를 사용해 비교를 진행
+
+  /* 함수의 3가지 표현법 */
+  function sum(a,b){
+    let result = a+b;
+    return result;
+  }
+
+  let sum1 = function (a,b){
+    let result = a+b;
+    return result;
+  };
+
+  let sum2 = (a,b) => {
+    let result = a+b;
+    return result;
+  };
+
+  let sum3 = (a,b) => a+b;
+
+
+</script>
+</body>
+</html>
